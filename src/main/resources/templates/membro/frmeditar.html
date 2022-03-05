@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+</head>
+<link
+	href="https://fonts.googleapis.com/css2?family=Handlee&display=swap"
+	rel="stylesheet">
+<style>
+.logo-container {
+	background-color: #47bcff;
+	color: #FFF;
+}
+
+.logo {
+	font-family: 'Handlee', cursive;
+	font-size: 2.5rem;
+}
+</style>
+<body>
+
+	<div class="logo-container mb-3 p-3 d-flex justify-content-between">
+		<span class="logo">cadastro1</span> <span class="mt-3">login</span>
+	</div>
+	<div class="container">
+		<div class="jumbotron mb-0">
+			<h1 class="display-4">Novo Membro</h1>
+		</div>
+		<div class="card mt-3">
+			<form th:action="@{/membro/salvar}" th:object="${membro}"
+				class="card-body" method="post">
+				<div class="form-group">
+					<label for="id"> id Membro</label> <input
+						th:field="*{id}" th:errorClass="is-invalid"
+						class="form-control" placeholder="id" disabled="true" /> <small>ID</small>
+					<div class="invalid-feedback" th:errors="*{id}">
+						Erros do id do membro</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="nomeMembro">Membro</label> <input
+						th:field="*{nomeMembro}" th:errorClass="is-invalid"
+						class="form-control" placeholder="nome do membro" /> <small>Informa
+						qual o nome do membro.</small>
+					<div class="invalid-feedback" th:errors="*{nomeMembro}">
+						Erros do nome do membro</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="urlImagem">Imagem</label> <input
+						th:field="*{urlImagem}" th:errorClass="is-invalid"
+						class="form-control" placeholder="url da imagem" /> <small>Copie
+						a url de uma boa imagem do membro e cole aqui para ajudar .</small>
+					<div class="invalid-feedback" th:errors="*{urlImagem}">Erros
+						da url da imagem</div>
+				</div>
+				<div class="form-group">
+					<label for="descricao">Descrição</label>
+					<textarea th:field="*{descricao}" class="form-control"
+						placeholder="Adicione detalhes importantes ."></textarea>
+				</div>
+				<button class="btn btn-primary" type="submit">Salvar</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
